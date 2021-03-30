@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+.md {
+  max-width: 800px;
+  display: grid;
+  justify-content: center;
+  margin: auto;
+}
+
+.md2 {
+  max-width: 1200px;
+  display: grid;
+
+  justify-content: center;
+  margin: auto;
+}
+
+.link {
+  color: darkblue;
+  &:hover {
+    color: blue;
+    cursor: pointer;
+  }
+}

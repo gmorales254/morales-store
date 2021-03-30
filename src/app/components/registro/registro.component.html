@@ -1,0 +1,131 @@
+<form class="md" (ngSubmit)="registrar()" [formGroup]="registerForm">
+  <h1>Login</h1>
+  <br />
+
+  <label class="text-gray-600 font-light">User name</label>
+
+  <input
+    name="userName"
+    type="text"
+    placeholder="Email"
+    class="w-full mt-2 mb-2 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500 form-control"
+    formControlName="userName"
+    required
+    [ngClass]="{
+      'is-valid':
+        registerForm.get('userName').touched &&
+        registerForm.get('userName').valid,
+      'is-invalid':
+        registerForm.get('userName').touched &&
+        !registerForm.get('userName').valid
+    }"
+  />
+  <span
+    class="mb-0 mt-0 ml-2 text-danger"
+    *ngIf="
+      !registerForm.get('userName').valid &&
+      registerForm.get('userName').touched
+    "
+  >
+    <small class="row ml-3" *ngIf="!registerForm.get('userName').valid">
+      Email no es válido *</small
+    >
+    <small
+      class="row ml-3"
+      *ngIf="registerForm.get('userName').getError('required')"
+    >
+      Email es requerido *</small
+    >
+  </span>
+
+  <label class="text-gray-600 font-light">Password</label>
+  <input
+    name="userPass"
+    type="password"
+    placeholder="User pass"
+    class="w-full mt-2 mb-2 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500 form-control"
+    formControlName="userPass"
+    required
+    [ngClass]="{
+      'is-valid':
+        registerForm.get('userPass').touched &&
+        registerForm.get('userPass').valid,
+      'is-invalid':
+        registerForm.get('userPass').touched &&
+        !registerForm.get('userPass').valid
+    }"
+  />
+  <span
+    class="mb-0 mt-0 text-danger"
+    *ngIf="
+      !registerForm.get('userPass').valid &&
+      registerForm.get('userPass').touched
+    "
+  >
+    <small class="row ml-3" *ngIf="!registerForm.get('userPass').valid">
+      Contraseña no es válido *</small
+    >
+
+    <small
+      class="row ml-3"
+      *ngIf="registerForm.get('userPass').getError('required')"
+    >
+      Contraseña es requerido *</small
+    >
+  </span>
+  <label class="text-gray-600 font-light">Confirm password</label>
+  <input
+    name="userRePass"
+    type="password"
+    placeholder="User pass"
+    class="w-full mt-2 mb-2 px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-green-500 form-control"
+    formControlName="userRePass"
+    required
+    [ngClass]="{
+      'is-valid':
+        registerForm.get('userRePass').touched &&
+        registerForm.get('userRePass').valid,
+      'is-invalid':
+        registerForm.get('userRePass').touched &&
+        !registerForm.get('userRePass').valid
+    }"
+  />
+  <span
+    class="mb-0 mt-0 text-danger"
+    *ngIf="
+      !registerForm.get('userRePass').valid &&
+      registerForm.get('userRePass').touched
+    "
+  >
+    <small
+      class="row ml-3"
+      *ngIf="registerForm.get('userRePass').errors.confirmPasswordValidator"
+    >
+      Contraseña no coincide *</small
+    >
+
+    <small class="row ml-3" *ngIf="!registerForm.get('userRePass').valid">
+      Contraseña no es válido *</small
+    >
+    <small
+      class="row ml-3"
+      *ngIf="registerForm.get('userRePass').getError('required')"
+    >
+      Contraseña es requerido *</small
+    >
+  </span>
+  <button
+    type="submit"
+    class="bg-blue-500 text-gray-100 rounded hover:bg-blue-400 px-4 py-2 mt-2 focus:outline-none"
+  >
+    Registrarse
+  </button>
+
+  <div
+    class="alert alert-warning alert-dismissible fade show mt-2 md"
+    role="alert"
+    *ngIf="error"
+  >
+    <strong>{{ error }}</strong>
+  </div>
+</form>

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "espaciopequesangular": {
+      "hosting": {
+        "desafio2-gmorales-camada14015lgarcia": [
+          "espaciopequesangular"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "espaciopequesangular"
+  }
+}

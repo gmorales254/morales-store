@@ -1,0 +1,74 @@
+<div class="container md display-5" *ngIf="loaderSetVisible">
+  <span>Cargando lista de productos</span>
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border" role="status"></div>
+  </div>
+</div>
+
+<div *ngIf="loaderSetVisible === false">
+  <div class="container md">
+    <form
+      class="form-group"
+      [formGroup]="searchForm"
+      (ngSubmit)="search()"
+      (keyup.enter)="search()"
+    >
+      <div>
+        <div class="input-group">
+          <input
+            class="form-control"
+            placeholder="Buscar producto..."
+            aria-describedby="button-addon1"
+            type="search"
+            name="inpSearchProd"
+            (keyup.enter)="search()"
+            formControlName="searchInp"
+          />
+          <button
+            class="btn btn-outline-primary"
+            type="button"
+            id="button-addon1"
+            (click)="search()"
+          >
+            <i class="bi bi-search"></i>
+          </button>
+        </div>
+        <span class="text-danger ml-3" *ngIf="error">
+          {{ error }}
+        </span>
+      </div>
+    </form>
+  </div>
+
+  <div class="container product-container mt-5">
+    <div class="row">
+      <div
+        class="card card-container"
+        style="width: 18rem"
+        *ngFor="let producto of productos"
+      >
+        <img
+          class="card-img-top"
+          src="{{ producto.foto }}"
+          alt="Card image cap"
+        />
+        <div class="card-body">
+          <h5 class="card-title h5">{{ producto.titulo }}</h5>
+          <p class="card-text">{{ producto.descripcion }}</p>
+        </div>
+        <div class="buy d-flex justify-content-between align-items-center">
+          <div class="price text-success">
+            <h5 class="mt-4 mb-3">{{ producto.precio | currency }}</h5>
+          </div>
+          <button
+            type="button"
+            (click)="comprar(producto.titulo, producto.precio)"
+            class="btn btn-danger mt-3 mb-3"
+          >
+            <i class="fas fa-shopping-cart"></i> Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

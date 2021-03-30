@@ -1,0 +1,74 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand">Morales's store</a>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a
+            class="nav-link active block px-3 py-2 rounded-md text-base font-medium"
+            aria-current="page"
+            [routerLink]="['/home']"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link active block px-3 py-2 rounded-md text-base font-medium"
+            aria-current="page"
+            [routerLink]="['/productos']"
+            >Productos</a
+          >
+        </li>
+      </ul>
+    </div>
+    <form class="d-flex">
+      <button
+        class="btn btn-outline-primary text-white carrito"
+        type="button"
+        [routerLink]="['/carrito']"
+      >
+        <i class="bi bi-basket"></i>
+
+        <div class="text-white">
+          <span> {{ cantidad }}</span>
+        </div>
+      </button>
+
+      <div class="logSinDiv">
+        <span class="hover:bg-blue-800" (click)="Login()" *ngIf="!estadoLog">
+          Login
+        </span>
+        <span class="hover:bg-blue-800" (click)="Logout()" *ngIf="estadoLog">
+          Logout
+        </span>
+        <span style="margin: 5px">/</span>
+        <span
+          class="hover:bg-blue-800"
+          [routerLink]="['/registro']"
+          *ngIf="!estadoLog"
+        >
+          Registro</span
+        >
+        <span
+          class="hover:bg-blue-800"
+          *ngIf="estadoLog"
+          [routerLink]="['/mi-perfil']"
+        >
+          <i class="bi bi-person-badge"></i> Mi Perfil
+        </span>
+      </div>
+    </form>
+  </div>
+</nav>

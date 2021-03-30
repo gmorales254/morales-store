@@ -1,0 +1,30 @@
+<div class="container" *ngIf="ordenes.length">
+  <div class="row justify-content-center">
+    <div class="col-4">
+      <ul class="list-group">
+        <li class="list-group-item active">Lista de productos</li>
+        <li class="list-group-item" *ngFor="let orden of ordenes | ordenesPipe">
+          {{ orden.producto }} {{ orden.precio | currency }} cantidad:
+          {{ orden.cantidad }}
+        </li>
+      </ul>
+      <div class="d-grid gap-2 col-6 mx-auto">
+        <button
+          class="btn btn-primary mt-3"
+          type="button"
+          (click)="comprar()"
+          [class.disabled]="!ordenes.length"
+        >
+          Finalizar orden {{ total | currency }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container md" *ngIf="!ordenes.length">
+  <span class="display-5">Ups! No hay articulos en tu carrito.</span>
+  <span class="link" [routerLink]="['/productos']"
+    >Click aqui para comprar ahora.</span
+  >
+</div>
